@@ -1,0 +1,14 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "titulo": "categoria 1",
+      "cor": "#ff6a00"
+    }, 
+    {
+      "id": 2,
+      "titulo": "categoria 2",
+      "cor": "#ff6a00"
+    }
+  ]
+}

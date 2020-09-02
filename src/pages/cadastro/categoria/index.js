@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
-
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -15,12 +14,20 @@ function CadastroCategoria() {
 
   // let nomeDaCategoria = useState('Filmes');
 
- 
   const { handleChange, values, clearForm } = useForm(valoresIniciais);
-
   const [Categorias, setCategorias] = useState([]);
 
- 
+  useEffect(() => {
+    const URL_TOP = 'http://localhost:8080/categorias';
+    fetch(URL_TOP)
+      .then(async (respostaDoServidor) => {
+        const resposta = await respostaDoServidor.json();
+        setCategorias([
+          ...resposta,
+        ]);
+      });
+  });
+
   return (
     <PageDefault>
       <h1>
